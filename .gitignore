@@ -97,3 +97,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+.idea/
+PredictDL4JMaven-1.0-SNAPSHOT.jar
