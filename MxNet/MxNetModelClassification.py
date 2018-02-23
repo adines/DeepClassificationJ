@@ -1,7 +1,5 @@
 import IModelClassification
 import mxnet as mx
-from PIL import Image
-import numpy as np
 import inspect
 import os
 from collections import namedtuple
@@ -10,9 +8,9 @@ class MxNetModelClassification(IModelClassification.IModelClassification):
     def loadModel(self,model):
         path = inspect.stack()[0][1]
         pos = path.rfind(os.sep)
-        pathModelo = path[:pos + 1] + 'Classification/model/' + model + '.json'
+        pathModelo = path[:pos + 1] + 'Classification'+os.sep+'model'+os.sep + model + '.json'
         symbol = mx.sym.load(pathModelo)
-        pathWeights = path[:pos + 1] + 'Classification/weights/' + model + '.params'
+        pathWeights = path[:pos + 1] + 'Classification'+os.sep+'weights'+os.sep + model + '.params'
         save_dict = mx.nd.load(pathWeights)
         arg_params = {}
         aux_params = {}

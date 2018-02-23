@@ -9,10 +9,6 @@ import os
 
 class PyTorchModelClassification(IModelClassification.IModelClassification):
     def loadModel(self,model):
-        # Definir una clase con la estructura del modelo
-        # Cargar la estructura del modelo a través del constructor de la clase creada
-        # Cargar los pesos de la red con model.load_state_dict(torch.load(PATH))
-        # Devolver el modelo
         framework="PyTorch"
         class_name =model
         packageName=framework+".Classification.model"
@@ -35,15 +31,7 @@ class PyTorchModelClassification(IModelClassification.IModelClassification):
         return self.postprocess(y_pred)
 
     def preprocess(self,image):
-        img_pil=Image.open(image)
-        prep = transforms.Compose([
-            transforms.CenterCrop(224),
-            transforms.ToTensor()
-        ])
-        img_prep=prep(img_pil)
-        img_var=Variable(img_prep)
-        img_var=img_var.unsqueeze(0)
-        return img_var
+        pass
 
     def postprocess(self,preds):
         pass
