@@ -1,4 +1,4 @@
-import DL4JModelClassification
+from DL4J import DL4JModelClassification
 import importlib
 
 class ModelClassificationFactory:
