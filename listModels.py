@@ -4,10 +4,9 @@ import argparse
 from subprocess import *
 
 
-def jarWrapper(self, *args):
+def jarWrapper( *args):
     process = Popen(['java', '-jar'] + list(args), stdout=PIPE, stderr=PIPE)
     result = []
-
     for line in process.stdout:
         result.append(line.decode('utf-8').rstrip('\n').rstrip('\r'))
     return result[0]
@@ -16,7 +15,7 @@ def listModels(framework):
     models=[]
     path = inspect.stack()[0][1]
     pos = path.rfind(os.sep)
-    path = path[:pos + 1]
+    path = path[:pos]
     if len(path)==0:
         path=framework
     else:
@@ -28,7 +27,7 @@ def listModels(framework):
                 pos=file.find("ModelClassification.py")
                 models.append(file[len(framework):pos])
     else:
-        path = path[:pos + 1] + 'PredictDL4JMaven-1.0-SNAPSHOT.jar'
+        path = path + os.sep+'PredictDL4JMaven-1.0-SNAPSHOT.jar'
         args = [path]
         result = jarWrapper(*args)
         models=result.split(",")
