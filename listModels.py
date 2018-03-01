@@ -16,7 +16,7 @@ def listModels(framework):
     path = inspect.stack()[0][1]
     pos = path.rfind(os.sep)
     path = path[:pos]
-    if len(path)==0:
+    if pos==-1:
         path=framework
     else:
         path=path+os.sep+framework
