@@ -2,6 +2,7 @@ import inspect
 import os
 import argparse
 from subprocess import *
+import json
 
 
 def jarWrapper( *args):
@@ -36,4 +37,10 @@ def listModels(framework):
 parser = argparse.ArgumentParser()
 parser.add_argument("-f", "--framework", required=True, help="Framework to obtain its models")
 args=vars(parser.parse_args())
-print(listModels(args["framework"]))
+
+data={}
+data['type']='models'
+data['framework']=args["framework"]
+data['models']=listModels(args["framework"])
+with open('data.json','w') as f:
+    json.dump(data,f)

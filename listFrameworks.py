@@ -1,5 +1,6 @@
 import inspect
 import os
+import json
 
 def listFrameworks():
     path=inspect.stack()[0][1]
@@ -15,4 +16,8 @@ def listFrameworks():
             frameworks.append(d)
     return frameworks
 
-print(listFrameworks())
+data={}
+data['type']='frameworks'
+data['frameworks']=listFrameworks()
+with open('data.json','w') as f:
+    json.dump(data,f)
