@@ -16,8 +16,9 @@ def listFrameworks():
             frameworks.append(d)
     return frameworks
 
-data={}
-data['type']='frameworks'
-data['frameworks']=listFrameworks()
-with open('data.json','w') as f:
-    json.dump(data,f)
+if __name__=="__main__":
+    data={}
+    data['type']='frameworks'
+    data['frameworks']=listFrameworks()
+    with open('data.json','w') as f:
+        json.dump(data,f)

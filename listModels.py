@@ -34,13 +34,14 @@ def listModels(framework):
         models=result.split(",")
     return models
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-f", "--framework", required=True, help="Framework to obtain its models")
-args=vars(parser.parse_args())
+if __name__=="__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--framework", required=True, help="Framework to obtain its models")
+    args=vars(parser.parse_args())
 
-data={}
-data['type']='models'
-data['framework']=args["framework"]
-data['models']=listModels(args["framework"])
-with open('data.json','w') as f:
-    json.dump(data,f)
+    data={}
+    data['type']='models'
+    data['framework']=args["framework"]
+    data['models']=listModels(args["framework"])
+    with open('data.json','w') as f:
+        json.dump(data,f)

@@ -1,6 +1,8 @@
 import numpy as np
 import inspect
 import os
+import sys
+sys.path.append(r'C:\Users\adines\Downloads\caffe\python')
 import caffe
 from Caffe import CaffeModelClassification
 
